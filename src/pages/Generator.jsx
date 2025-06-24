@@ -57,6 +57,11 @@ const Generator = () => {
   const [customIcon, setCustomIcon] = useState(null); // for uploaded icon
   const [borderStyle, setBorderStyle] = useState('rounded'); // 'rounded' or 'square'
   const cardRef = useRef(null);
+  const [borderSize, setBorderSize] = useState(4);
+  const [borderColor, setBorderColor] = useState('#000000');
+  const [labelBgColor, setLabelBgColor] = useState('#000000');
+  const [labelTextColor, setLabelTextColor] = useState('#ffffff');
+  const [shadow, setShadow] = useState(true);
 
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
@@ -438,14 +443,21 @@ const Generator = () => {
                 </button>
               </div>
             </div>
-            <QrCard
-              qrRef={qrRef}
-              labelText={labelText}
-              labelIcon={customIcon || ICONS.find(i => i.key === labelIcon)?.icon}
-              borderStyle={borderStyle}
-              backgroundColor={qrOptions.backgroundOptions.color}
-              cardRef={cardRef}
-            />
+            <div className="flex justify-center">
+              <QrCard
+                qrRef={qrRef}
+                labelText={labelText}
+                labelIcon={customIcon || ICONS.find(i => i.key === labelIcon)?.icon}
+                borderStyle={borderStyle}
+                borderSize={borderSize}
+                borderColor={borderColor}
+                backgroundColor={qrOptions.backgroundOptions.color}
+                labelBgColor={labelBgColor}
+                labelTextColor={labelTextColor}
+                shadow={shadow}
+                cardRef={cardRef}
+              />
+            </div>
             <div className="mt-6 space-y-4">
               <div>
                 <label className="block text-sm font-medium text-amoled-text mb-2">Label Text</label>
@@ -482,6 +494,55 @@ const Generator = () => {
                   <option value="rounded">Rounded</option>
                   <option value="square">Square</option>
                 </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-amoled-text mb-2">Border Size</label>
+                <input
+                  type="range"
+                  min="1"
+                  max="16"
+                  value={borderSize}
+                  onChange={e => setBorderSize(Number(e.target.value))}
+                  className="w-full accent-amoled-accent"
+                />
+                <span className="text-xs text-amoled-muted">{borderSize}px</span>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-amoled-text mb-2">Border Color</label>
+                <input
+                  type="color"
+                  value={borderColor}
+                  onChange={e => setBorderColor(e.target.value)}
+                  className="w-12 h-8 rounded border border-amoled-border bg-amoled-card cursor-pointer"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-amoled-text mb-2">Label Background Color</label>
+                <input
+                  type="color"
+                  value={labelBgColor}
+                  onChange={e => setLabelBgColor(e.target.value)}
+                  className="w-12 h-8 rounded border border-amoled-border bg-amoled-card cursor-pointer"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-amoled-text mb-2">Label Text Color</label>
+                <input
+                  type="color"
+                  value={labelTextColor}
+                  onChange={e => setLabelTextColor(e.target.value)}
+                  className="w-12 h-8 rounded border border-amoled-border bg-amoled-card cursor-pointer"
+                />
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={shadow}
+                  onChange={e => setShadow(e.target.checked)}
+                  id="shadow-toggle"
+                  className="accent-amoled-accent"
+                />
+                <label htmlFor="shadow-toggle" className="text-sm text-amoled-text">Enable Shadow</label>
               </div>
             </div>
             <div className="mt-6 p-4 bg-amoled-border/20 rounded-lg">

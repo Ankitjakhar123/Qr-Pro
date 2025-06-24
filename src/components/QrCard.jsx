@@ -7,13 +7,29 @@ import React from 'react';
  * - labelText: string, text to display below the QR code
  * - labelIcon: JSX (SVG) or image URL for the icon/logo
  * - borderStyle: 'rounded' | 'square', controls border radius
+ * - borderSize: number (px)
+ * - borderColor: string (CSS color)
  * - backgroundColor: background color for the QR code area
+ * - labelBgColor: background color for the label area
+ * - labelTextColor: color for the label text
+ * - shadow: boolean, whether to show shadow
  * - cardRef: ref for the whole card (for export as image)
  */
-const QrCard = ({ qrRef, labelText, labelIcon, borderStyle = 'rounded', backgroundColor = '#fff', cardRef }) => {
+const QrCard = ({
+  qrRef,
+  labelText,
+  labelIcon,
+  borderStyle = 'rounded',
+  borderSize = 4,
+  borderColor = '#000',
+  backgroundColor = '#fff',
+  labelBgColor = '#000',
+  labelTextColor = '#fff',
+  shadow = true,
+  cardRef
+}) => {
   const borderRadius = borderStyle === 'rounded' ? '1.5rem' : '0.5rem';
   const labelRadius = borderStyle === 'rounded' ? '9999px' : '0.5rem';
-
   return (
     <div
       ref={cardRef}
@@ -21,8 +37,12 @@ const QrCard = ({ qrRef, labelText, labelIcon, borderStyle = 'rounded', backgrou
       style={{ userSelect: 'none' }}
     >
       <div
-        className="bg-white p-4 border-4 border-black shadow-lg"
-        style={{ borderRadius, backgroundColor }}
+        className={shadow ? 'bg-white p-4 shadow-lg' : 'bg-white p-4'}
+        style={{
+          borderRadius,
+          backgroundColor,
+          border: `${borderSize}px solid ${borderColor}`
+        }}
       >
         <div
           ref={qrRef}
@@ -31,8 +51,11 @@ const QrCard = ({ qrRef, labelText, labelIcon, borderStyle = 'rounded', backgrou
       </div>
       {/* Label Section Below QR */}
       <div
-        className="flex items-center mt-4 bg-black px-4 py-2 w-fit shadow-md"
-        style={{ borderRadius: labelRadius }}
+        className={shadow ? 'flex items-center mt-4 px-4 py-2 w-fit shadow-md' : 'flex items-center mt-4 px-4 py-2 w-fit'}
+        style={{
+          borderRadius: labelRadius,
+          backgroundColor: labelBgColor
+        }}
       >
         {labelIcon && (
           typeof labelIcon === 'string' ? (
@@ -41,7 +64,7 @@ const QrCard = ({ qrRef, labelText, labelIcon, borderStyle = 'rounded', backgrou
             <span className="mr-2">{labelIcon}</span>
           )
         )}
-        <span className="text-white text-xl font-semibold">{labelText}</span>
+        <span className="text-xl font-semibold" style={{ color: labelTextColor }}>{labelText}</span>
       </div>
     </div>
   );
