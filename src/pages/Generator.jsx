@@ -30,7 +30,7 @@ const Generator = () => {
       type: 'rounded'
     },
     backgroundOptions: {
-      color: '#ffffff'
+      color: '#FFF9E5'
     },
     imageOptions: {
       crossOrigin: 'anonymous',
@@ -62,6 +62,7 @@ const Generator = () => {
   const [labelBgColor, setLabelBgColor] = useState('#000000');
   const [labelTextColor, setLabelTextColor] = useState('#ffffff');
   const [shadow, setShadow] = useState(true);
+  const [previewBgColor, setPreviewBgColor] = useState('#F8FAF8'); // Light, theme-friendly default
 
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
@@ -430,7 +431,7 @@ const Generator = () => {
           className="space-y-6"
         >
           {/* QR Preview */}
-          <div className="glass-card p-8">
+          <div className="glass-card p-8 mb-6" style={{ backgroundColor: previewBgColor }}>
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-lg font-semibold text-amoled-text">Preview</h3>
               <div className="flex items-center space-x-2">
@@ -458,7 +459,12 @@ const Generator = () => {
                 cardRef={cardRef}
               />
             </div>
-            <div className="mt-6 space-y-4">
+            </div>
+
+          {/* Customization */}
+          <div className="glass-card p-8">
+            <h3 className="text-lg font-semibold text-amoled-text mb-6">Customization</h3>
+            <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-amoled-text mb-2">Label Text</label>
                 <input
@@ -544,12 +550,15 @@ const Generator = () => {
                 />
                 <label htmlFor="shadow-toggle" className="text-sm text-amoled-text">Enable Shadow</label>
               </div>
-            </div>
-            <div className="mt-6 p-4 bg-amoled-border/20 rounded-lg">
-              <p className="text-sm text-amoled-muted mb-2">Content:</p>
-              <p className="text-sm text-amoled-text font-mono break-all">
-                {qrData}
-              </p>
+              <div>
+                <label className="block text-sm font-medium text-amoled-text mb-2">Preview Background Color</label>
+                <input
+                  type="color"
+                  value={previewBgColor}
+                  onChange={e => setPreviewBgColor(e.target.value)}
+                  className="w-12 h-8 rounded border border-amoled-border bg-amoled-card cursor-pointer"
+                />
+              </div>
             </div>
           </div>
 
