@@ -1,0 +1,67 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="192" height="192" rx="24" fill="#6366f1"/>
+  
+  <!-- QR Code Pattern for 192x192 -->
+  <!-- Corner squares -->
+  <rect x="16" y="16" width="48" height="48" fill="white" rx="8"/>
+  <rect x="24" y="24" width="32" height="32" fill="#6366f1" rx="4"/>
+  <rect x="32" y="32" width="16" height="16" fill="white" rx="2"/>
+  
+  <rect x="128" y="16" width="48" height="48" fill="white" rx="8"/>
+  <rect x="136" y="24" width="32" height="32" fill="#6366f1" rx="4"/>
+  <rect x="144" y="32" width="16" height="16" fill="white" rx="2"/>
+  
+  <rect x="16" y="128" width="48" height="48" fill="white" rx="8"/>
+  <rect x="24" y="136" width="32" height="32" fill="#6366f1" rx="4"/>
+  <rect x="32" y="144" width="16" height="16" fill="white" rx="2"/>
+  
+  <!-- Timing patterns -->
+  <rect x="16" y="72" width="8" height="8" fill="white" rx="2"/>
+  <rect x="32" y="72" width="8" height="8" fill="white" rx="2"/>
+  <rect x="48" y="72" width="8" height="8" fill="white" rx="2"/>
+  <rect x="96" y="72" width="8" height="8" fill="white" rx="2"/>
+  <rect x="112" y="72" width="8" height="8" fill="white" rx="2"/>
+  <rect x="128" y="72" width="8" height="8" fill="white" rx="2"/>
+  <rect x="144" y="72" width="8" height="8" fill="white" rx="2"/>
+  <rect x="160" y="72" width="8" height="8" fill="white" rx="2"/>
+  <rect x="176" y="72" width="8" height="8" fill="white" rx="2"/>
+  
+  <rect x="72" y="16" width="8" height="8" fill="white" rx="2"/>
+  <rect x="72" y="32" width="8" height="8" fill="white" rx="2"/>
+  <rect x="72" y="48" width="8" height="8" fill="white" rx="2"/>
+  <rect x="72" y="96" width="8" height="8" fill="white" rx="2"/>
+  <rect x="72" y="112" width="8" height="8" fill="white" rx="2"/>
+  <rect x="72" y="128" width="8" height="8" fill="white" rx="2"/>
+  <rect x="72" y="144" width="8" height="8" fill="white" rx="2"/>
+  <rect x="72" y="160" width="8" height="8" fill="white" rx="2"/>
+  <rect x="72" y="176" width="8" height="8" fill="white" rx="2"/>
+  
+  <!-- Center alignment pattern -->
+  <rect x="88" y="88" width="16" height="16" fill="white" rx="4"/>
+  <rect x="92" y="92" width="8" height="8" fill="#6366f1" rx="2"/>
+  <rect x="94" y="94" width="4" height="4" fill="white" rx="1"/>
+  
+  <!-- Data modules pattern -->
+  <rect x="80" y="80" width="8" height="8" fill="white" rx="2"/>
+  <rect x="112" y="80" width="8" height="8" fill="white" rx="2"/>
+  <rect x="80" y="112" width="8" height="8" fill="white" rx="2"/>
+  <rect x="112" y="112" width="8" height="8" fill="white" rx="2"/>
+  
+  <!-- Additional data pattern -->
+  <rect x="128" y="128" width="8" height="8" fill="white" rx="2"/>
+  <rect x="144" y="128" width="8" height="8" fill="white" rx="2"/>
+  <rect x="160" y="128" width="8" height="8" fill="white" rx="2"/>
+  <rect x="176" y="128" width="8" height="8" fill="white" rx="2"/>
+  <rect x="128" y="144" width="8" height="8" fill="white" rx="2"/>
+  <rect x="144" y="144" width="8" height="8" fill="white" rx="2"/>
+  <rect x="160" y="144" width="8" height="8" fill="white" rx="2"/>
+  <rect x="176" y="144" width="8" height="8" fill="white" rx="2"/>
+  <rect x="128" y="160" width="8" height="8" fill="white" rx="2"/>
+  <rect x="144" y="160" width="8" height="8" fill="white" rx="2"/>
+  <rect x="160" y="160" width="8" height="8" fill="white" rx="2"/>
+  <rect x="176" y="160" width="8" height="8" fill="white" rx="2"/>
+  <rect x="128" y="176" width="8" height="8" fill="white" rx="2"/>
+  <rect x="144" y="176" width="8" height="8" fill="white" rx="2"/>
+  <rect x="160" y="176" width="8" height="8" fill="white" rx="2"/>
+  <rect x="176" y="176" width="8" height="8" fill="white" rx="2"/>
+</svg>

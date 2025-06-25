@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, Bell, Settings, LogOut, QrCode } from 'lucide-react';
+import { Menu, Bell, Settings, LogOut, QrCode, Download } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext.jsx';
 import { useAuth } from '../../context/AuthContext.jsx';
+import { usePWA } from '../../hooks/usePWA.js';
 
 const TopBar = () => {
   const { sidebarOpen, setSidebarOpen, toggleSidebar, isMobile } = useTheme();
   const { user, logout } = useAuth();
+  const { isInstallable, installPWA, isPWAInstalled } = usePWA();
 
   const handleMenuClick = () => {
     if (isMobile) {
@@ -41,6 +43,20 @@ const TopBar = () => {
 
       {/* Right side */}
       <div className="flex items-center space-x-3">
+        {/* PWA Install Button - only show if installable and not already installed */}
+        {isInstallable && !isPWAInstalled && (
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={installPWA}
+            className="hidden sm:flex items-center space-x-2 px-3 py-2 bg-amoled-accent/20 text-amoled-accent border border-amoled-accent/30 rounded-lg hover:bg-amoled-accent/30 transition-colors text-sm font-medium"
+            title="Install QR Pro as an app"
+          >
+            <Download className="w-4 h-4" />
+            <span>Install App</span>
+          </motion.button>
+        )}
+
         {user ? (
           <>
             <motion.button

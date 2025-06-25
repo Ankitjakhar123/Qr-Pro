@@ -10,10 +10,14 @@ import {
   ArrowRight,
   Sparkles,
   Clock,
-  Download
+  Download,
+  Smartphone
 } from 'lucide-react';
+import { usePWA } from '../hooks/usePWA.js';
 
 const Home = () => {
+  const { isInstallable, installPWA, isPWAInstalled } = usePWA();
+  
   const features = [
     {
       icon: QrCode,
@@ -82,6 +86,19 @@ const Home = () => {
           <Link to="/templates" className="btn-secondary text-lg px-8 py-4">
             Browse Templates
           </Link>
+          
+          {/* PWA Install Button */}
+          {isInstallable && !isPWAInstalled && (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={installPWA}
+              className="flex items-center space-x-2 px-6 py-3 bg-amoled-card border border-amoled-accent/50 text-amoled-accent rounded-lg hover:bg-amoled-accent/10 transition-all font-medium"
+            >
+              <Smartphone className="w-5 h-5" />
+              <span>Install App</span>
+            </motion.button>
+          )}
         </div>
 
         <div className="flex items-center justify-center mt-8 space-x-6 text-sm text-amoled-muted">

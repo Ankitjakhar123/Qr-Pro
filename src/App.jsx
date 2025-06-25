@@ -2,6 +2,9 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Layout from './components/Layout/Layout.jsx';
+import PWAInstallBanner from './components/PWAInstallBanner.jsx';
+import Notification from './components/Notification.jsx';
+import { usePWA } from './hooks/usePWA.js';
 import Home from './pages/Home.jsx';
 import Generator from './pages/Generator.jsx';
 import Templates from './pages/Templates.jsx';
@@ -15,8 +18,17 @@ import Upgrade from './pages/Upgrade.jsx';
 import ProtectedRoute from './components/Auth/ProtectedRoute.jsx';
 
 function App() {
+  const { showInstallSuccess, setShowInstallSuccess } = usePWA();
+  
   return (
     <div className="min-h-screen bg-amoled-bg text-amoled-text">
+      <PWAInstallBanner />
+      <Notification
+        type="success"
+        message="QR Pro has been installed successfully! You can now access it from your home screen."
+        isVisible={showInstallSuccess}
+        onClose={() => setShowInstallSuccess(false)}
+      />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
