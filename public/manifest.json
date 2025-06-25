@@ -32,7 +32,7 @@
       "icons": [
         {
           "src": "/favicon.svg",
-          "sizes": "32x32", 
+          "sizes": "32x32",
           "type": "image/svg+xml"
         }
       ]
