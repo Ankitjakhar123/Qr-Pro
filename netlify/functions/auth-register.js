@@ -10,7 +10,15 @@ export const handler = async (event, context) => {
   try {
     await connectToDatabase();
 
+    if (!event.body) {
+      return createResponse(400, { message: 'Request body is required' });
+    }
+
     const { name, email, password } = JSON.parse(event.body);
+
+    if (!name || !email || !password) {
+      return createResponse(400, { message: 'Name, email, and password are required' });
+    }
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
@@ -49,6 +57,9 @@ export const handler = async (event, context) => {
     });
   } catch (error) {
     console.error('Registration error:', error);
-    return createResponse(500, { message: 'Server error during registration' });
+    return createResponse(500, { 
+      message: 'Server error during registration',
+      error: error.message 
+    });
   }
 };
