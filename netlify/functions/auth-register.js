@@ -7,6 +7,11 @@ export const handler = async (event, context) => {
   const corsResponse = handleCors(event);
   if (corsResponse) return corsResponse;
 
+  // Only allow POST requests
+  if (event.httpMethod !== 'POST') {
+    return createResponse(405, { message: 'Method Not Allowed' });
+  }
+
   try {
     await connectToDatabase();
 
