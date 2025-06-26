@@ -1,0 +1,58 @@
+[build]
+  functions = "netlify/functions"
+  publish = "dist"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/api/auth/register"
+  to = "/.netlify/functions/auth-register"
+  status = 200
+
+[[redirects]]
+  from = "/api/auth/login"
+  to = "/.netlify/functions/auth-login"
+  status = 200
+
+[[redirects]]
+  from = "/api/auth/me"
+  to = "/.netlify/functions/auth-me"
+  status = 200
+
+[[redirects]]
+  from = "/api/qr/create"
+  to = "/.netlify/functions/qr-create"
+  status = 200
+
+[[redirects]]
+  from = "/api/qr/my-codes"
+  to = "/.netlify/functions/qr-list"
+  status = 200
+
+[[redirects]]
+  from = "/api/ai/detect-type"
+  to = "/.netlify/functions/ai-detect-type"
+  status = 200
+
+[[redirects]]
+  from = "/api/ai/magic-generate"
+  to = "/.netlify/functions/ai-magic-generate"
+  status = 200
+
+[[redirects]]
+  from = "/api/health"
+  to = "/.netlify/functions/health"
+  status = 200
+
+[[redirects]]
+  from = "/api/qr/:id"
+  to = "/.netlify/functions/qr-delete"
+  status = 200
+
+# SPA fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
