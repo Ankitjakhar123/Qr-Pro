@@ -31,7 +31,7 @@ export const connectToDatabase = async () => {
 };
 
 export const corsHeaders = {
-  'Access-Control-Allow-Origin': '*', // Will be more restrictive in production
+  'Access-Control-Allow-Origin': 'https://qrproo.netlify.app',
   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
   'Access-Control-Allow-Credentials': 'true',
