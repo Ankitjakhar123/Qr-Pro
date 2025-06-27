@@ -160,15 +160,18 @@ const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.8 }}
-        className="glass-card p-12 text-center"
+        className="glass-card text-center px-4 py-10 sm:p-12 max-w-2xl mx-auto my-8 flex flex-col items-center justify-center"
       >
-        <h2 className="text-3xl font-bold text-amoled-text mb-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-amoled-text mb-4 leading-tight">
           Ready to create amazing QR codes?
         </h2>
-        <p className="text-lg text-amoled-muted mb-8 max-w-xl mx-auto">
+        <p className="text-base sm:text-lg text-amoled-muted mb-8 max-w-lg mx-auto">
           Start your free trial today and experience the power of AI-assisted QR generation
         </p>
-        <Link to="/generate" className="btn-primary text-lg px-8 py-4">
+        <Link
+          to="/generate"
+          className="btn-primary w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 flex items-center justify-center mx-auto"
+        >
           Get Started Now <ArrowRight className="w-5 h-5 ml-2" />
         </Link>
       </motion.section>
