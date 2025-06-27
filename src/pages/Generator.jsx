@@ -1109,7 +1109,7 @@ const Generator = () => {
     {
       key: 'phone',
       icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <rect x="6" y="2" width="12" height="20" rx="4" stroke="currentColor" strokeWidth="2" fill="none" />
           <circle cx="12" cy="18" r="1" fill="currentColor" />
         </svg>
@@ -1118,7 +1118,7 @@ const Generator = () => {
     {
       key: 'music',
       icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
           <rect x="10" y="8" width="4" height="8" fill="currentColor" />
         </svg>
@@ -1127,7 +1127,7 @@ const Generator = () => {
     {
       key: 'link',
       icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path d="M10 13a5 5 0 007.07 0l2.83-2.83a5 5 0 00-7.07-7.07l-1.41 1.41" />
           <path d="M14 11a5 5 0 01-7.07 0L4.1 8.17a5 5 0 017.07-7.07l1.41 1.41" />
         </svg>
@@ -1529,7 +1529,12 @@ const Generator = () => {
                 <QrCard
                   qrRef={qrRef}
                   labelText={labelText}
-                  labelIcon={customIcon || ICONS.find(i => i.key === labelIcon)?.icon}
+                  labelIcon={customIcon ? (
+                    <img src={customIcon} alt="icon" className="w-6 h-6 mr-2" />
+                  ) : (
+                    ICONS.find(i => i.key === labelIcon)?.icon &&
+                    React.cloneElement(ICONS.find(i => i.key === labelIcon)?.icon, { style: { color: labelTextColor }, className: 'w-6 h-6 mr-2' })
+                  )}
                   borderStyle={borderStyle}
                   borderSize={borderSize}
                   borderColor={borderColor}
@@ -1572,7 +1577,7 @@ const Generator = () => {
                 <label className="block text-sm font-medium text-amoled-text mb-2">Label Icon</label>
                 <IconPicker
                   icons={ICONS}
-                  value={labelIcon}
+                  value={customIcon ? 'custom' : labelIcon}
                   onChange={val => {
                     if (val.startsWith('data:')) {
                       setCustomIcon(val);
@@ -2031,7 +2036,12 @@ const Generator = () => {
                     <QrCard
                       qrRef={modalQrRef}
                       labelText={labelText}
-                      labelIcon={customIcon || ICONS.find(i => i.key === labelIcon)?.icon}
+                      labelIcon={customIcon ? (
+                        <img src={customIcon} alt="icon" className="w-6 h-6 mr-2" />
+                      ) : (
+                        ICONS.find(i => i.key === labelIcon)?.icon &&
+                        React.cloneElement(ICONS.find(i => i.key === labelIcon)?.icon, { style: { color: labelTextColor }, className: 'w-6 h-6 mr-2' })
+                      )}
                       borderStyle={borderStyle}
                       borderSize={borderSize}
                       borderColor={borderColor}
@@ -2039,7 +2049,7 @@ const Generator = () => {
                       labelBgColor={labelBgColor}
                       labelTextColor={labelTextColor}
                       shadow={shadow}
-                      cardRef={null} // Don't pass cardRef to modal preview to avoid conflicts
+                      cardRef={null}
                     />
                   </div>
                 </div>

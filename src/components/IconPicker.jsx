@@ -28,13 +28,13 @@ const IconPicker = ({ icons = [], value, onChange, allowUpload = true }) => {
         <button
           key={key}
           type="button"
-          className={`p-2 border-2 ${value === key ? 'border-amoled-accent' : 'border-transparent'} rounded-lg bg-white shadow`}
+          className={`p-2 border-2 ${value === key ? 'border-amoled-accent' : 'border-amoled-border'} rounded-lg bg-amoled-card shadow flex items-center justify-center`}
           onClick={() => onChange(key)}
         >
           {typeof icon === 'string' ? (
             <img src={icon} alt={key} className="w-8 h-8" />
           ) : (
-            icon
+            React.cloneElement(icon, { style: { color: '#fff' }, className: 'w-8 h-8' })
           )}
         </button>
       ))}
