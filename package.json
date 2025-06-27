@@ -12,6 +12,7 @@
     "server": "cd server && npm run dev"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^5.32.2",
     "axios": "^1.6.2",
     "framer-motion": "^10.16.4",
     "html-to-image": "^1.11.13",
