@@ -1328,31 +1328,37 @@ const Generator = () => {
           </div>
 
           {/* Basic Customization */}
-          <div className="glass-card p-6">
+          <div className="glass-card p-4 sm:p-6">
             <h3 className="text-lg font-semibold text-amoled-text mb-4">Appearance</h3>
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-amoled-text mb-2">
                     Foreground Color
                   </label>
-                  <input
-                    type="color"
-                    value={qrOptions.dotsOptions.color}
-                    onChange={(e) => handleColorChange('foreground', e.target.value)}
-                    className="w-full h-10 rounded-lg border border-amoled-border bg-amoled-card cursor-pointer"
-                  />
+                  <div className="flex items-center space-x-3">
+                    <input
+                      type="color"
+                      value={qrOptions.dotsOptions.color}
+                      onChange={(e) => handleColorChange('foreground', e.target.value)}
+                      className="w-16 h-10 rounded-lg border border-amoled-border bg-amoled-card cursor-pointer flex-shrink-0"
+                    />
+                    <span className="text-xs text-amoled-muted font-mono truncate">{qrOptions.dotsOptions.color}</span>
+                  </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-amoled-text mb-2">
                     Background Color
                   </label>
-                  <input
-                    type="color"
-                    value={qrOptions.backgroundOptions.color}
-                    onChange={(e) => handleColorChange('background', e.target.value)}
-                    className="w-full h-10 rounded-lg border border-amoled-border bg-amoled-card cursor-pointer"
-                  />
+                  <div className="flex items-center space-x-3">
+                    <input
+                      type="color"
+                      value={qrOptions.backgroundOptions.color}
+                      onChange={(e) => handleColorChange('background', e.target.value)}
+                      className="w-16 h-10 rounded-lg border border-amoled-border bg-amoled-card cursor-pointer flex-shrink-0"
+                    />
+                    <span className="text-xs text-amoled-muted font-mono truncate">{qrOptions.backgroundOptions.color}</span>
+                  </div>
                 </div>
               </div>
 
@@ -1477,32 +1483,33 @@ const Generator = () => {
           className="space-y-6"
         >
           {/* QR Preview */}
-          <div className="glass-card p-8 mb-6" style={{ backgroundColor: previewBgColor }}>
+          <div className="glass-card p-4 sm:p-8 mb-6" style={{ backgroundColor: previewBgColor }}>
             {/* Header with Title and Download Options */}
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex-1">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+              <div className="flex-1 min-w-0">
                 <h3 className="text-lg font-semibold text-amoled-text mb-2">Preview</h3>
                 <input
                   type="text"
                   value={qrTitle}
                   onChange={(e) => setQrTitle(e.target.value)}
                   placeholder="Enter QR code name..."
-                  className="text-sm bg-transparent border-none outline-none text-amoled-muted focus:text-amoled-text transition-colors w-full max-w-xs"
+                  className="text-sm bg-transparent border-none outline-none text-amoled-muted focus:text-amoled-text transition-colors w-full truncate"
+                  style={{ maxWidth: '100%' }}
                 />
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 flex-shrink-0">
                 <div className="flex items-center space-x-1">
                   <button
                     onClick={() => handleDownload('png')}
-                    className="flex items-center space-x-2 btn-primary"
+                    className="flex items-center space-x-1 sm:space-x-2 btn-primary text-xs sm:text-sm px-2 sm:px-4 py-2"
                     title="Quick Download PNG"
                   >
                     <Download className="w-4 h-4" />
-                    <span>PNG</span>
+                    <span className="hidden sm:inline">PNG</span>
                   </button>
                   <button
                     onClick={() => setShowDownloadModal(true)}
-                    className="px-3 py-3 text-sm border border-amoled-border rounded-lg hover:border-amoled-accent/50 text-amoled-muted hover:text-amoled-text transition-all"
+                    className="px-2 sm:px-3 py-2 sm:py-3 text-sm border border-amoled-border rounded-lg hover:border-amoled-accent/50 text-amoled-muted hover:text-amoled-text transition-all"
                     title="More Download Options"
                   >
                     <Settings className="w-4 h-4" />
@@ -1510,7 +1517,8 @@ const Generator = () => {
                 </div>
                 <button
                   onClick={handleShare}
-                  className="flex items-center space-x-2 px-3 py-2 text-sm border border-amoled-border rounded-lg hover:border-amoled-accent/50 text-amoled-muted hover:text-amoled-text transition-all"
+                  className="flex items-center justify-center px-2 sm:px-3 py-2 text-sm border border-amoled-border rounded-lg hover:border-amoled-accent/50 text-amoled-muted hover:text-amoled-text transition-all"
+                  title="Share QR Code"
                 >
                   <Share2 className="w-4 h-4" />
                 </button>
@@ -1548,22 +1556,22 @@ const Generator = () => {
             </div>
             
             {/* QR Code Info */}
-            <div className="mt-6 p-4 bg-amoled-bg/30 rounded-lg">
-              <div className="flex items-center justify-between text-sm">
+            <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-amoled-bg/30 rounded-lg">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 text-sm">
                 <div className="text-amoled-muted">
-                  <span className="font-medium">Type:</span> {qrTypes.find(t => t.value === qrType)?.label}
+                  <span className="font-medium text-amoled-text">Type:</span> <span className="text-amoled-text">{qrTypes.find(t => t.value === qrType)?.label}</span>
                 </div>
                 <div className="text-amoled-muted">
-                  <span className="font-medium">Size:</span> {qrOptions.width}×{qrOptions.height}px
+                  <span className="font-medium text-amoled-text">Size:</span> <span className="text-amoled-text">{qrOptions.width}×{qrOptions.height}px</span>
                 </div>
               </div>
             </div>
             </div>
 
           {/* Customization */}
-          <div className="glass-card p-8">
-            <h3 className="text-lg font-semibold text-amoled-text mb-6">Customization</h3>
-            <div className="space-y-4">
+          <div className="glass-card p-4 sm:p-8">
+            <h3 className="text-lg font-semibold text-amoled-text mb-4 sm:mb-6">Customization</h3>
+            <div className="space-y-4 sm:space-y-5">
               <div>
                 <label className="block text-sm font-medium text-amoled-text mb-2">Label Text</label>
                 <input
@@ -1571,6 +1579,7 @@ const Generator = () => {
                   value={labelText}
                   onChange={e => setLabelText(e.target.value)}
                   className="input-field w-full"
+                  placeholder="Enter label text..."
                 />
               </div>
               <div>
@@ -1601,7 +1610,9 @@ const Generator = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-amoled-text mb-2">Border Size</label>
+                <label className="block text-sm font-medium text-amoled-text mb-2">
+                  Border Size: <span className="text-amoled-accent">{borderSize}px</span>
+                </label>
                 <input
                   type="range"
                   min="1"
@@ -1610,34 +1621,44 @@ const Generator = () => {
                   onChange={e => setBorderSize(Number(e.target.value))}
                   className="w-full accent-amoled-accent"
                 />
-                <span className="text-xs text-amoled-muted">{borderSize}px</span>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-amoled-text mb-2">Border Color</label>
-                <input
-                  type="color"
-                  value={borderColor}
-                  onChange={e => setBorderColor(e.target.value)}
-                  className="w-12 h-8 rounded border border-amoled-border bg-amoled-card cursor-pointer"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-amoled-text mb-2">Label Background Color</label>
-                <input
-                  type="color"
-                  value={labelBgColor}
-                  onChange={e => setLabelBgColor(e.target.value)}
-                  className="w-12 h-8 rounded border border-amoled-border bg-amoled-card cursor-pointer"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-amoled-text mb-2">Label Text Color</label>
-                <input
-                  type="color"
-                  value={labelTextColor}
-                  onChange={e => setLabelTextColor(e.target.value)}
-                  className="w-12 h-8 rounded border border-amoled-border bg-amoled-card cursor-pointer"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-amoled-text mb-2">Border Color</label>
+                  <div className="flex items-center space-x-3">
+                    <input
+                      type="color"
+                      value={borderColor}
+                      onChange={e => setBorderColor(e.target.value)}
+                      className="w-12 h-10 rounded border border-amoled-border bg-amoled-card cursor-pointer"
+                    />
+                    <span className="text-xs text-amoled-muted font-mono truncate">{borderColor}</span>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-amoled-text mb-2">Label Background</label>
+                  <div className="flex items-center space-x-3">
+                    <input
+                      type="color"
+                      value={labelBgColor}
+                      onChange={e => setLabelBgColor(e.target.value)}
+                      className="w-12 h-10 rounded border border-amoled-border bg-amoled-card cursor-pointer"
+                    />
+                    <span className="text-xs text-amoled-muted font-mono truncate">{labelBgColor}</span>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-amoled-text mb-2">Label Text Color</label>
+                  <div className="flex items-center space-x-3">
+                    <input
+                      type="color"
+                      value={labelTextColor}
+                      onChange={e => setLabelTextColor(e.target.value)}
+                      className="w-12 h-10 rounded border border-amoled-border bg-amoled-card cursor-pointer"
+                    />
+                    <span className="text-xs text-amoled-muted font-mono truncate">{labelTextColor}</span>
+                  </div>
+                </div>
               </div>
               <div className="flex items-center gap-2">
                 <input
@@ -1651,23 +1672,31 @@ const Generator = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-amoled-text mb-2">Preview Background</label>
-                <div className="flex items-center space-x-3">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
                   <input
                     type="color"
                     value={previewBgColor}
                     onChange={e => setPreviewBgColor(e.target.value)}
-                    className="w-12 h-8 rounded border border-amoled-border bg-amoled-card cursor-pointer"
+                    className="w-12 h-10 rounded border border-amoled-border bg-amoled-card cursor-pointer flex-shrink-0"
                   />
-                  <div className="flex space-x-2">
+                  <div className="flex space-x-2 flex-1 w-full sm:w-auto">
                     <button
                       onClick={() => setPreviewBgColor('#ffffff')}
-                      className="px-3 py-1 text-xs rounded bg-white text-black border hover:bg-gray-100 transition-colors"
+                      className={`px-4 py-2 text-xs sm:text-sm rounded border transition-colors flex-1 sm:flex-none ${
+                        previewBgColor === '#ffffff' || previewBgColor === '#fff'
+                          ? 'bg-white text-black border-amoled-accent'
+                          : 'bg-white text-black border-amoled-border hover:bg-gray-100'
+                      }`}
                     >
                       Light
                     </button>
                     <button
                       onClick={() => setPreviewBgColor('#1a1a1a')}
-                      className="px-3 py-1 text-xs rounded bg-gray-800 text-white border border-gray-600 hover:bg-gray-700 transition-colors"
+                      className={`px-4 py-2 text-xs sm:text-sm rounded border transition-colors flex-1 sm:flex-none ${
+                        previewBgColor === '#1a1a1a' || previewBgColor === '#000000'
+                          ? 'bg-gray-800 text-white border-amoled-accent'
+                          : 'bg-gray-800 text-white border-gray-600 hover:bg-gray-700'
+                      }`}
                     >
                       Dark
                     </button>
