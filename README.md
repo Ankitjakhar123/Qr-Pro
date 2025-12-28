@@ -168,7 +168,7 @@ Before you begin, ensure you have the following installed:
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/qr-pro.git
+git clone https://github.com/ankitjakhar123/qr-pro.git
 cd qr-pro
 ```
 
@@ -693,10 +693,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👤 Author
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
-- Website: [yourwebsite.com](https://yourwebsite.com)
+**Ankit Jakhar**
+- GitHub: [@ankitjakhar123](https://github.com/ankitjakhar123)
+- Email: ankitjakhar836@gmail.com
+- Website: [ankitjakhar.me](https://ankitjakhar.me)
 
 ## 🙏 Acknowledgments
 
@@ -710,7 +710,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-For support, email your.email@example.com or open an issue in the GitHub repository.
+For support, email ankitjakhar836@gmail.com or open an issue in the GitHub repository.
 
 ## 🌟 Show Your Support
 
